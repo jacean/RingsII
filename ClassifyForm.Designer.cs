@@ -117,6 +117,7 @@
             this.Name = "ClassifyForm";
             this.Text = "文件分类";
             this.Load += new System.EventHandler(this.ClassifyForm_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClassifyForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

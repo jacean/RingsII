@@ -93,7 +93,7 @@ namespace Rings
             GlobalFunc.AddToZipDir(header);
 
             GlobalFunc.ProjectStaff_Update(TGR.Text);
-            if (isNeedDel) { File.Delete(this.file); }
+            
             this.Close();
         }
         public static void saveFile(string file,string RingsID,string LX)
@@ -124,6 +124,11 @@ namespace Rings
 
             GlobalFunc.ProjectStaff_Update(ConfigInfo.UserName);
             
+        }
+
+        private void ClassifyForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (isNeedDel) {if(File.Exists(this.file)) File.Delete(this.file); }
         }
     }
 }

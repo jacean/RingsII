@@ -138,5 +138,62 @@ namespace Rings
             ClassifyForm classifyForm = new ClassifyForm(FJ.Text, tempRingsID);
             classifyForm.Show();
         }
+
+        private void uploadPic_Click(object sender, EventArgs e)
+        {
+            string[] pics;
+            string path="";
+            OpenFileDialog openFi = new OpenFileDialog();
+            openFi.Multiselect = true;
+            openFi.Filter = "图像文件(JPeg, Gif, Bmp, etc.)|*.jpg;*.jpeg;*.gif;*.bmp;*.tif; *.tiff; *.png| JPeg 图像文件(*.jpg;*.jpeg)"
+                + "|*.jpg;*.jpeg |GIF 图像文件(*.gif)|*.gif |BMP图像文件(*.bmp)|*.bmp|Tiff图像文件(*.tif;*.tiff)|*.tif;*.tiff|Png图像文件(*.png)"
+                + "| *.png |所有文件(*.*)|*.*";
+            if (openFi.ShowDialog() == DialogResult.OK)
+            {
+                pics = openFi.FileNames;                
+                path=mergePic(pics);
+                FJ.Text="";
+                foreach (var item in openFi.SafeFileNames)
+                {
+                    FJ.Text += item;
+                }
+                
+                ClassifyForm classifyForm = new ClassifyForm(path, tempRingsID,true);
+                classifyForm.Show();
+            }
+            else
+            { return; }
+        }
+
+        private string  mergePic(string[] pics)
+        {         
+            
+            List<Image> maps = new List<Image>();
+            foreach (var item in pics)
+            {
+               maps.Add(Image.FromFile(item));
+            }
+            string imgName = Tools.getTimeStamp()+".jpeg";
+            var finalWidth =maps.Max(img => img.Width);
+            var finalHeight = maps.Sum(img => img.Height);
+            Bitmap backgroudImg = new Bitmap(finalWidth,finalHeight);
+            Graphics g = Graphics.FromImage(backgroudImg);
+            //清除画布,背景设置为白色
+            g.Clear(System.Drawing.Color.White);
+            int width = 0;
+            int height = 0;  
+            foreach (Image b in maps)
+            {
+                                  
+                g.DrawImage(b, new Point(0, height));
+                width = b.Width;   
+                height += b.Height;
+            }            
+            g.Dispose();
+            backgroudImg.Save(imgName, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return imgName;
+        }
+
+       
     }
 }

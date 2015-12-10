@@ -50,6 +50,7 @@
             this.brwFile = new System.Windows.Forms.Button();
             this.opnFile = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.uploadPic = new System.Windows.Forms.Button();
             this.dragAndDropBox1 = new Rings.DragAndDropBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
@@ -248,11 +249,11 @@
             // 
             // brwFile
             // 
-            this.brwFile.Location = new System.Drawing.Point(201, 62);
+            this.brwFile.Location = new System.Drawing.Point(180, 62);
             this.brwFile.Name = "brwFile";
-            this.brwFile.Size = new System.Drawing.Size(51, 23);
+            this.brwFile.Size = new System.Drawing.Size(74, 23);
             this.brwFile.TabIndex = 22;
-            this.brwFile.Text = "浏览";
+            this.brwFile.Text = "文档";
             this.brwFile.UseVisualStyleBackColor = true;
             this.brwFile.Click += new System.EventHandler(this.brwFile_Click);
             // 
@@ -262,6 +263,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.uploadPic);
             this.panel1.Controls.Add(this.dragAndDropBox1);
             this.panel1.Controls.Add(this.brwFile);
             this.panel1.Controls.Add(this.label4);
@@ -270,6 +272,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(269, 88);
             this.panel1.TabIndex = 24;
+            // 
+            // uploadPic
+            // 
+            this.uploadPic.Location = new System.Drawing.Point(12, 62);
+            this.uploadPic.Name = "uploadPic";
+            this.uploadPic.Size = new System.Drawing.Size(75, 23);
+            this.uploadPic.TabIndex = 24;
+            this.uploadPic.Text = "图片";
+            this.uploadPic.UseVisualStyleBackColor = true;
+            this.uploadPic.Click += new System.EventHandler(this.uploadPic_Click);
             // 
             // dragAndDropBox1
             // 
@@ -345,5 +357,6 @@
         private DragAndDropBox dragAndDropBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button uploadPic;
     }
 }
