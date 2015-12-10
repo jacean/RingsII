@@ -54,9 +54,9 @@ namespace Rings
         {
             this.Left = 1200;
             this.Top = 20;
-            this.dragAndDropBox1.onFileDrop += (file,shiftDown) =>
+            this.dragAndDropBox1.onFileDrop += (file,shiftDown,isDir) =>
             {
-                ClassifyForm classifyForm = new ClassifyForm(file, "");
+                ClassifyForm classifyForm = new ClassifyForm(file, "",isDir);
                 classifyForm.Show();
             };
         }

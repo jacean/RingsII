@@ -122,9 +122,9 @@ namespace Rings
             this.TCR.Text = ConfigInfo.UserName;
             GlobalFunc.ProjectStaff_Load(TCR);
             tempRingsID = ConfigInfo.UserID + "_" + System.Guid.NewGuid().ToString("N");
-            this.dragAndDropBox1.onFileDrop += (file,shiftDown) =>
+            this.dragAndDropBox1.onFileDrop += (file,shiftDown,isDir) =>
             {
-                ClassifyForm classifyForm = new ClassifyForm(file, tempRingsID);
+                ClassifyForm classifyForm = new ClassifyForm(file, tempRingsID,isDir);
                 classifyForm.ShowDialog();
             };
             panel1.Visible = (parent == null);

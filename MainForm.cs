@@ -43,7 +43,7 @@ namespace Rings
         {
             this.Left = Screen.PrimaryScreen.Bounds.Width - this.Width - 10;
             this.Top = 150;
-            this.dragAndDropBox1.onFileDrop += (file, shiftDown) =>
+            this.dragAndDropBox1.onFileDrop += (file, shiftDown,isDir) =>
             {
                 if (shiftDown)
                 {
@@ -52,9 +52,10 @@ namespace Rings
                 }
                 else
                 {
-                    //不需要传递ringsID？
-                    ClassifyForm classifyForm = new ClassifyForm(file, "");
-                    classifyForm.Show();
+                    //不需要传递ringsID？    
+                        ClassifyForm classifyForm = new ClassifyForm(file, "",isDir);
+                        classifyForm.Show();
+                  
                 }
             };
             ScreenShotForm screenShotForm = new ScreenShotForm();
